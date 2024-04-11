@@ -18,7 +18,7 @@ async def main():
         tls_context=tls_context,
     ) as client:
         async with client.messages() as messages:
-            await client.subscribe("#")
+            await client.subscribe(env("TOPICO"))
             async for message in messages:
                 print(str(message.topic) + ": " + message.payload.decode("utf-8"))
 
